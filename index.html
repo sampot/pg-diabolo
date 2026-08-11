@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="扯鈴：節奏連招，在拍點輸入抖鈴／拋鈴／接鈴衝高 combo。純前端 Playgrounds SAM。"
+    />
+    <title>扯鈴</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪀</text></svg>"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main>
+      <header class="hero">
+        <h1>扯鈴</h1>
+        <p class="tagline">節奏連招 · 抖鈴／拋鈴／接鈴</p>
+      </header>
+
+      <section class="meter" aria-label="狀態">
+        <div class="meter-item">
+          <span class="label">分數</span>
+          <strong id="score">0</strong>
+        </div>
+        <div class="meter-item">
+          <span class="label">連招</span>
+          <strong id="combo">x0</strong>
+        </div>
+        <div class="meter-item">
+          <span class="label">最佳</span>
+          <strong id="best">0</strong>
+        </div>
+        <div class="meter-item">
+          <span class="label">難度</span>
+          <strong id="level">難度 1</strong>
+        </div>
+        <div class="meter-actions">
+          <button type="button" id="btn-mute" class="secondary" aria-pressed="true">
+            音效開
+          </button>
+        </div>
+      </section>
+
+      <div class="controls">
+        <button type="button" id="btn-start">開局</button>
+      </div>
+
+      <p id="status" class="status" role="status">準備開局</p>
+
+      <div class="stage">
+        <canvas
+          id="game"
+          width="360"
+          height="480"
+          role="img"
+          aria-label="扯鈴節拍遊戲區"
+        ></canvas>
+      </div>
+
+      <div class="pad">
+        <button type="button" id="btn-jerk" class="pad-btn jerk">抖鈴</button>
+        <button type="button" id="btn-toss" class="pad-btn toss">拋鈴</button>
+        <button type="button" id="btn-catch" class="pad-btn catch">接鈴</button>
+      </div>
+
+      <p class="hint">
+        節拍點從右滑向黃色判定線，在落到線上時按對應動作（抖鈴／拋鈴／接鈴）。拍點愈準分數愈高，連招中間漏拍或按錯即斷。難度會隨時間提升、拍速加快——45
+        秒內衝高 combo 與分數。音樂／鈴用網頁 Canvas 繪製與 Web Audio 合成。
+      </p>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
